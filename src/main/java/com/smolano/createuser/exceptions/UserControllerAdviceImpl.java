@@ -8,14 +8,12 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 public class UserControllerAdviceImpl implements IUserControllerAdvice {
 
     @Override
-    public ResponseEntity<?> userNotFoundError(UserNotFoundException userNotFoundException) {
-
-//        ApiError apiError = new ApiError();
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<String> userNotFoundError(UserNotFoundException userNotFoundException) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(userNotFoundException.getMessage());
     }
 
     @Override
-    public ResponseEntity<?> handleError(UserException userException) {
+    public ResponseEntity<String> handleError(UserException userException) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(userException.getMessage());
     }
 }

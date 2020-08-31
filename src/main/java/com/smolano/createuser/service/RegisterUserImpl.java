@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,7 +19,7 @@ public class RegisterUserImpl implements IRegisterUser {
     private CreateUserRepository createUserRepository;
 
     @Override
-    public void registerUser(@Valid User user) {
+    public void registerUser(User user) {
 
         LOGGER.info("Creating user:{}", user);
         Optional<User> userFoundInDatabase = createUserRepository.findByIdentification(user.getIdentification());
@@ -31,7 +32,7 @@ public class RegisterUserImpl implements IRegisterUser {
 
 
     @Override
-    public Iterable<User> getAllUsers() {
+    public List<User> getAllUsers() {
         try {
             LOGGER.info("Getting all users");
             return createUserRepository.findAll();

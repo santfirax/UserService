@@ -8,5 +8,5 @@ import java.util.List;
 public interface IRegisterUser {
     void registerUser(User user);
 
-    Iterable<User> getAllUsers();
+    List<User> getAllUsers();
 }

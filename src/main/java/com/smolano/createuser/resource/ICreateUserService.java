@@ -1,21 +1,22 @@
 package com.smolano.createuser.resource;
 
 import com.smolano.createuser.entities.User;
+import com.smolano.createuser.model.UserDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RequestMapping("/users")
 public interface ICreateUserService {
 
     @PostMapping
-    ResponseEntity<User> registerUser(URI location,  @Valid @RequestBody User user);
+    ResponseEntity<User> registerUser(URI location, @RequestBody UserDTO userDTO);
 
     @GetMapping
-    ResponseEntity<Iterable<User>> getAllUsers();
+    ResponseEntity<List<User>> getAllUsers();
 }

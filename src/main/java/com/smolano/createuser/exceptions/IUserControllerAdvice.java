@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 public interface IUserControllerAdvice {
     @ExceptionHandler(value = UserNotFoundException.class)
-    ResponseEntity<?> userNotFoundError(UserNotFoundException userNotFoundException);
+    ResponseEntity<String> userNotFoundError(UserNotFoundException userNotFoundException);
 
     @ExceptionHandler(value = UserException.class)
-    ResponseEntity<?> handleError(UserException userException);
+    ResponseEntity<String> handleError(UserException userException);
 }

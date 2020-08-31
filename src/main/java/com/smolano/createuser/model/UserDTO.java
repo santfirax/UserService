@@ -1,18 +1,8 @@
-package com.smolano.createuser.entities;
+package com.smolano.createuser.model;
 
 import com.smolano.createuser.models.TypeId;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
-
-@Entity
-@Table(name = "users", schema = "public")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NotNull
+public class UserDTO {
     private String firstName;
     private String lastName;
     private TypeId typeId;
@@ -20,14 +10,6 @@ public class User {
     private String address;
     private String phone;
     private String email;
-    /*
-    no se debe guardar password de forma plana
-     */
-    private String password;
-
-    public User() {
-
-    }
 
     public String getFirstName() {
         return firstName;
@@ -85,31 +67,16 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
+        return "UserDTO{" +
+                "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", typeId=" + typeId +
                 ", identification='" + identification + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 }
